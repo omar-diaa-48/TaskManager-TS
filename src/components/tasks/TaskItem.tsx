@@ -1,3 +1,4 @@
+import Checkbox from "expo-checkbox";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { ITask } from "../../utils/interfaces";
 
@@ -13,6 +14,8 @@ export const TaskItem: React.FC<TaskItemProps> = (props) => {
     return (
         <View style={styles.item}>
             <TouchableOpacity style={styles.itemTextContainer} onPress={() => handleToggleComplete(item.id)}>
+                <Checkbox value={item.completed} />
+
                 <Text style={[styles.itemText, item.completed && styles.completedText]}>
                     {item.text}
                 </Text>
@@ -41,6 +44,8 @@ const styles = StyleSheet.create({
     },
     itemTextContainer: {
         flex: 0.8,
+        gap: 8,
+        flexDirection: 'row'
     },
     itemText: {
         fontSize: 16,
